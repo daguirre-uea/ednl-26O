@@ -24,3 +24,15 @@ class Nodo:
             return True
         else:
             return False
+
+    def es_hoja(self) -> bool:
+        return len(self.hijos) == 0
+    
+    def grado(self) -> int:
+        return len(self.hijos)
+    
+    def profundidad(self) -> int:
+        prof = 0
+        nodo_actual = self
+        
+        return prof
