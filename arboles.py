@@ -34,5 +34,49 @@ class Nodo:
     def profundidad(self) -> int:
         prof = 0
         nodo_actual = self
-        
+        while nodo_actual.padre != None:
+            # prof +=1
+            prof = prof + 1 
+            nodo_actual = nodo_actual.padre
         return prof
+    
+    def anscestros(self) -> list[Nodo]:
+        """
+        Returns:
+            list[Nodo]: [padre, abuelo, bisabuelo, ..., raiz]
+        """
+        ansc = []
+        nodo_actual = self
+        while nodo_actual.padre is not None:
+            ansc.append(nodo_actual.padre)
+            nodo_actual = nodo_actual.padre
+        return ansc
+    
+    def camino_desde_raiz(self) -> list[Nodo]:
+        """Returns:
+            list[Nodo]: [raiz,..., bisabuelo, abuelo, padre, self]
+        """
+        #obtengo los anscestro
+        ansc = self.anscestros
+        # invierto la lista de anscestro
+        ansc_inv = list( reversed(ansc) )
+        ansc_inv.append(self)
+        return ansc_inv
+    
+    def hermanos(self) -> list[Nodo]:
+        """
+        Returns:
+            list[Nodo]: Lista de hermanos de self - Hijos del padre
+            de self, excepto self
+        """
+        h = self.padre.hijos
+        herm = []
+        for i in h:
+            if i.valor != self.valor:
+                herm.append(i)
+        return self.herm
+    
+    # Crear función para insertar hijos a un nodo
+    # Recibe el id (valor del hijo) y opcionalmente la posición (int)
+    # Crear un nodo Nodo (valor, padre=self)
+    # Agrego el nuevo nodo a mi lista de hijos
