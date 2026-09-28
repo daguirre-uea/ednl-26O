@@ -2,6 +2,7 @@
 from typing import Optional, Any
 from __future__ import annotations
 
+
 class Nodo:
     # Constructor de la clase Nodo
     # Permite crear objetos de tipo Nodo
@@ -15,12 +16,11 @@ class Nodo:
         # hijo debe ser una lista de objetos de tipo Nodo
         # inicialmente está vacío
         self.hijos: list[Nodo] = []
-    
-    # Métodos de la clase Nodo 
+
+    # Métodos de la clase Nodo
     # Funciones que calculan "algo" del nodo
     def es_raiz(self) -> bool:
         if self.padre == None:
             return True
         else:
             return False
-    
