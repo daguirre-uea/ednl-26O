@@ -76,6 +76,22 @@ class Nodo:
                 herm.append(i)
         return self.herm
     
+    def orden(self) -> int:
+        if self is None:
+            return 0
+        else:
+            # n guarda la suma de los ordenes de los hijos de self
+            n = 0
+            for h in self.hijos:
+                n = n + h.orden()
+            return 1 + n
+    
+    def orden1(self) -> int:
+        if self is None:
+            return 0
+        else:
+            return 1 + sum(h.orden() for h in self.hijos)
+    
     # Crear función para insertar hijos a un nodo
     # Recibe el id (valor del hijo) y opcionalmente la posición (int)
     # Crear un nodo Nodo (valor, padre=self)
