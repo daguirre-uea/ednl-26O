@@ -1,7 +1,6 @@
 # Bibliotecas que nos permite manipular tipos de datos
-from typing import Optional, Any
 from __future__ import annotations
-
+from typing import Optional, Any
 
 class Nodo:
     # Constructor de la clase Nodo
@@ -92,7 +91,32 @@ class Nodo:
         else:
             return 1 + sum(h.orden() for h in self.hijos)
     
+    def __repr__(self) -> str:
+        return f"Nodo({self.valor!r})"
+    
     # Crear función para insertar hijos a un nodo
     # Recibe el id (valor del hijo) y opcionalmente la posición (int)
     # Crear un nodo Nodo (valor, padre=self)
     # Agrego el nuevo nodo a mi lista de hijos
+    
+#subarblo: puede ser de cualquier tipo - Será una lista, numero, letra
+#padre: puede ser de tipo Nodo, None, por default None
+#devuelve un objeto de tipo Nodo
+def desde_anidado(subarbol: Any, padre: Optional[Nodo] = None) -> Nodo:
+    #si subarbol no es una lista
+    if not isinstance(subarbol, list):
+        # El nuevo nodo es una hoja
+        nvo_nodo = Nodo(subarbol, padre)
+        return nvo_nodo
+    else:
+        nvo_nodo = Nodo(subarbol[0],padre)
+        for h in subarbol[1:]:
+            hijo = desde_anidado(h, nvo_nodo)
+            nvo_nodo.hijos.append(hijo)
+        return nvo_nodo
+    
+
+lista = ["A",["B","D","F"],"C"]
+raiz = desde_anidado(lista)
+print("Hijo de A: ", raiz.hijos)
+print("Orden de A: ", raiz.orden())
