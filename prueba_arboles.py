@@ -31,3 +31,8 @@ for hijo in nodoD.hijos:
     print("hijos: ", hijo.valor) 
     
 padreD = nodoD.padre
+
+nodoD.sec = 8
+
+print("Secuencia nodo D: ", nodoD.sec)
+

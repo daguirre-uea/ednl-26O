@@ -15,6 +15,7 @@ class Nodo:
         # hijo debe ser una lista de objetos de tipo Nodo
         # inicialmente está vacío
         self.hijos: list[Nodo] = []
+        self.secuencia = 0
 
     # Métodos de la clase Nodo
     # Funciones que calculan "algo" del nodo
