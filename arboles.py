@@ -114,9 +114,3 @@ def desde_anidado(subarbol: Any, padre: Optional[Nodo] = None) -> Nodo:
             hijo = desde_anidado(h, nvo_nodo)
             nvo_nodo.hijos.append(hijo)
         return nvo_nodo
-    
-
-lista = ["A",["B","D","F"],"C"]
-raiz = desde_anidado(lista)
-print("Hijo de A: ", raiz.hijos)
-print("Orden de A: ", raiz.orden())
