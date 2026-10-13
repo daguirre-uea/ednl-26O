@@ -16,6 +16,7 @@ class Nodo:
         # inicialmente está vacío
         self.hijos: list[Nodo] = []
         self.secuencia = 0
+        self.hijos_sin_visitar: list[Nodo] = []
 
     # Métodos de la clase Nodo
     # Funciones que calculan "algo" del nodo
@@ -99,6 +100,14 @@ class Nodo:
     # Recibe el id (valor del hijo) y opcionalmente la posición (int)
     # Crear un nodo Nodo (valor, padre=self)
     # Agrego el nuevo nodo a mi lista de hijos
+    def agregar_hijo(self, valor: Any, posicion: Optional[int] = None) -> Nodo:
+        """Crea un nodo con `valor`, lo inserta como hijo y lo devuelve."""
+        nuevo = Nodo(valor,self)
+        if posicion is None:
+            self.hijos.append(nuevo)          
+        else:
+            self.hijos.insert(posicion, nuevo)  # desplaza los hijos siguientes
+        return nuevo
     
 #subarblo: puede ser de cualquier tipo - Será una lista, numero, letra
 #padre: puede ser de tipo Nodo, None, por default None
@@ -114,4 +123,5 @@ def desde_anidado(subarbol: Any, padre: Optional[Nodo] = None) -> Nodo:
         for h in subarbol[1:]:
             hijo = desde_anidado(h, nvo_nodo)
             nvo_nodo.hijos.append(hijo)
+            nvo_nodo.hijos_sin_visitar.append(hijo)
         return nvo_nodo
