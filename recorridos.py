@@ -26,3 +26,8 @@ def dfs_preorden_recursivo(nodo: Optional[ar.Nodo], contador: int):
     # Si ya visite a todos mis hijos -> Regresa al padre
     else:
         dfs_preorden_recursivo(nodo.padre, contador)
+
+lista = ["A", ["B", ["E", "F"], "G"], ["C", "H"], ["D", "I", "J"] ]
+raiz = ar.desde_anidado(lista)
+
+dfs_preorden_recursivo(raiz, 0)
